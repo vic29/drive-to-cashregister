@@ -1,3 +1,7 @@
+<?php
+
+define("PENZTAR", 'penztar');
+
 App::uses('AppModel', 'Model');
 class Bizonylat extends AppModel {
     public $useTable = 'bizonylatok';
@@ -11,4 +15,6 @@ class Bizonylat extends AppModel {
             'foreignKey' => 'alszamId'
         )
     );
+
+
 }

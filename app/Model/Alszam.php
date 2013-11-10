@@ -1,3 +1,4 @@
+<?php
 App::uses('AppModel', 'Model');
 class Alszam extends AppModel {
     public $useTable = 'alszamok'; 
