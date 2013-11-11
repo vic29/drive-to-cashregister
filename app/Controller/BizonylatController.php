@@ -10,13 +10,24 @@ App::uses('AppController', 'Controller');
 App::uses('CakeTime', 'Utility');
 App::uses('Bizonylat', 'Model');
 App::uses('BizonylatUtils', 'Controller');
+App::uses('CommonUtils', 'Controller');
 
 class BizonylatController extends AppController {
+	
+	public function penztarKonyvel(){
+		$bizonylatok = CommonUtils::csvToKeyArray('export.csv',';');
+		
+		debug($bizonylatok);
+		
+		$this->bizonylatMent($bizonylatok);
+	}
 
-    public function penztarKonyvel($bizonylatok) {
+    public function bizonylatMent($bizonylatok) {
         $tetelSorszam = $this->findLastTetelSorszam();
+		debug($tetelSorszam);
 
         foreach($bizonylatok as $bizonylat){
+        	debug($bizonylat);
             $this->Bizonylat->create();
 
             $bizonylatDatuma = $bizonylat->bizonylatDatuma;
@@ -35,8 +46,9 @@ class BizonylatController extends AppController {
                 'nevjegyzekbeRogzitve' => 0,
                 'konyvelesiEv' => date('Y')
             );
-
-            $this->Bizonylat->save($data);
+			
+			debug($data);
+            //$this->Bizonylat->save($data);
         }
     }
 

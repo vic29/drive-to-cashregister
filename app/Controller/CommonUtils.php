@@ -17,6 +17,8 @@ class CommonUtils {
         // Do it
         $data = CommonUtils::csvToArray($file, $delimiter);
 
+		debug($data);
+
         // Set number of elements (minus 1 because we shift off the first row)
         $count = count($data) - 1;
 
